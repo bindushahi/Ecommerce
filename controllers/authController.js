@@ -1,6 +1,6 @@
 import UserModel from '../models/UserModel.js'
 import { comparePassword, hashPassword } from '../utils/authHelper.js'
-import jwt from "jsonwebtoken"
+import JWT from "jsonwebtoken"
 
 export const registerController= async(req,res)=>{
     try{
@@ -83,7 +83,7 @@ const match =await comparePassword(password,user.password)
     })
   }  
 //token create
-const token=await jwt.sign({_id:user._id},process.env.JWT_SECRET,{
+const token=await JWT.sign({_id:user._id},process.env.JWT_SECRET,{
     expiresIn:"7d",
 })
 res.status(200).send({
