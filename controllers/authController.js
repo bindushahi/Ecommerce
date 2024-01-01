@@ -1,5 +1,6 @@
 import UserModel from '../models/UserModel.js'
-import { hashPassword } from '../utils/authHelper.js'
+import { comparePassword, hashPassword } from '../utils/authHelper.js'
+import jwt from "jsonwebtoken"
 
 export const registerController= async(req,res)=>{
     try{
@@ -38,10 +39,11 @@ if(existingUser){
 //register user
 const hashedPassword= await hashPassword(password)
 //save
-const user= new UserModel({username,email,password:hashedPassword,phonenumber,address,role}).save()
+const user= await UserModel({username,email,password:hashedPassword,phonenumber,address,role}).save()
 res.status(201).send({
     success:true,
     message:'user register successfully',
+    user,
 })
 
     }catch(error){
@@ -53,4 +55,59 @@ res.status(201).send({
         })
     }
 }
+//POST LOGIN
+export const loginController=async(req,res)=>{
+    try{
+        const {email,password}=req.body
+//validation
+if(!email || !password){
+    return res.status(404).send({
+        success:false,
+        message:"INVALID email and password"
+
+    })
+}
+//check user
+const user=await UserModel.findOne({email})
+if(!user){
+    return res.status(404).send({
+        success:false,
+        message:'email not registered'
+    })
+}
+const match =await comparePassword(password,user.password)
+  if (!match){
+    return res.status(200).send({
+        success:false,
+        message:"Invalid password"
+    })
+  }  
+//token create
+const token=await jwt.sign({_id:user._id},process.env.JWT_SECRET,{
+    expiresIn:"7d",
+})
+res.status(200).send({
+    success:true,
+    message:"login successfullly",
+    user:{
+        username:user.username,
+        email:user.email,
+        phonenumber:user.phonenumber,
+        address:user.address,
+    },
+    token,
+});
+
+
+} catch(error){
+        console.log(error)
+        res.status(500).send({
+            success:false,
+            message:"ERROR in login",
+            error
+        })
+
+    }
+
+};
 
