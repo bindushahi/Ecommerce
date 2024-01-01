@@ -3,8 +3,8 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import connectDB from "./config/db.js";
-import authRoutes from "./routes/authRoute.js"
+import connectDB from "./backend/config/db.js";
+import authRoutes from "./backend/routes/authRoute.js"
 
 
 //configure env
