@@ -4,7 +4,7 @@ import { Container, Card } from 'react-bootstrap';
 
 const Policy = () => {
   return (
-    <Layout>
+    <Layout title={"Policy -Eshop Policy"}>
       <Container fluid className='policy-container' style={{ minHeight: '60vh' }}>
         <h1 className='bg-dark p-3 text-white text-center'>POLICY</h1>
 

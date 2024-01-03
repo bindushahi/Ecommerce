@@ -5,7 +5,7 @@ import { BiMailSend } from 'react-icons/bi';
 
 const AboutUs = () => {
   return (
-    <Layout>
+    <Layout title={"About us -Eshop Team"}>
       <Container fluid className='aboutus d-flex align-items-center justify-content-center'>
         <div className='about-info text-center'>
           <h1 className='bg-dark p-2 text-white'>ABOUT US</h1>
