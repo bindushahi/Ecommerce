@@ -10,3 +10,26 @@ font-family: 'Playfair Display',
 serif;
 font-family: 'Poppins',
 sans-serif;*/
+
+/*navbar css*/
+.navbar{
+font-family: 'poppins';
+font-size: 17px;
+line-height: 26px;
+text-transform: uppercase;
+box-shadow: 0 8px 6px -6px rgb(176, 176, 248);
+border-bottom: 0x solid gray;
+}
+
+.nav-link{
+  font-weight: 300 !important;
+}
+.active{
+  border-bottom: 3px solid rgb(159, 224, 238);
+}
+.navbar-brand{
+  font-weight: 700;
+  font-family: "roboto","sans-serif";
+  letter-spacing: 3px;
+  padding-left: 2px;
+}
