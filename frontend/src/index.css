@@ -33,3 +33,20 @@ border-bottom: 0x solid gray;
   letter-spacing: 3px;
   padding-left: 2px;
 }
+/*footer css*/
+.footer{
+  color:white;
+  padding: 5px;
+  background: #000000;
+  background:linear-gradient( to right,
+  #434343,#000000);
+}
+.footer a{
+  text-decoration: none;
+  color:white;
+  padding:10px;
+}
+.footer a:hover{
+  color:rgb(159, 224, 238);
+  border-bottom: 3px solid rgb(159, 224, 238);
+}
