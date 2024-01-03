@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Header />
-      <div style={{ backgroundColor: 'lavender', minHeight: '100vh', padding: '20px' }}>
+      <div style={{ backgroundColor: 'lavender', minHeight: '80vh', padding: '20px' }}>
         {children}
       </div>
       <Footer />
