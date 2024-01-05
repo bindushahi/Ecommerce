@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
 import Layout from '../../components/Layout/Layout.js'
-import { toast } from 'react-toastify';
+import {toast} from 'react-hot-toast';
+import{useNavigate} from 'react-router-dom';
+import axios from "axios";
+import '../../styles/AuthStyles.css'
 
 const Register = () => {
     const[username,setUsername]=useState("");
@@ -8,20 +11,33 @@ const Register = () => {
     const[password,setPassword]=useState("");
     const[phonenumber,setPhonenumber]=useState("");
     const[address,setAddress]=useState("");
-
+    const navigate=useNavigate("");
 
     //handle submit
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault()
-        console.log(username,email,password,phonenumber,address)
-        toast.success("yeyyyyy success")
-    }
+        try{
+            const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{username,email,phonenumber,password,address,role:0});
 
+
+            if (res.data.success){
+                toast.success(res.data.message)
+                navigate('/login');
+            } else{
+                toast.error(res.data.message)
+            }
+
+        }catch(error){
+            console.log(error)
+            toast.error('something went wrong')
+        }
+    }
   return (
     
     <Layout title="Register -Ecommerce App">
-<div className='register'>
+<div className='form-container'>
     <h1>Register Page</h1>
+    
 <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label className="form-label">Username</label>
@@ -38,7 +54,7 @@ const Register = () => {
   </div>
   <div className="mb-3">
     <label className="form-label">Phone Number</label>
-    <input type="number" value={phonenumber} onChange={(e)=>setPhonenumber(e.target.value)}className="form-control" id="exampleInputPhonenumber"placeholder='Enter Phone Number'required />
+    <input type="text" value={phonenumber} onChange={(e)=>setPhonenumber(e.target.value)}className="form-control" id="exampleInputPhonenumber"placeholder='Enter Phone Number'required />
   </div>
    <div className="mb-3">
     <label className="form-label">Address</label>

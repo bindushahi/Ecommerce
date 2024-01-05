@@ -8,22 +8,22 @@ export const registerController= async(req,res)=>{
 
 //validation
 if(!username){
-return res.status(400).json({ error: 'Name is Required' });
+return res.status(400).json({ message: 'Name is Required' });
 }
 if(!email){
-return res.status(400).json({ error: 'Email is Required' });
+return res.status(400).json({ message: 'Email is Required' });
 }
 if(!password){
-return res.status(400).json({ error: 'Password is Required' });
+return res.status(400).json({ message: 'Password is Required' });
 }
 if(!phonenumber){
-return res.status(400).json({ error: 'Phonenumber is Required' });
+return res.status(400).json({ message: 'Phonenumber is Required' });
 }
 if(!address){
-return res.status(400).json({ error: 'Address is Required' });
+return res.status(400).json({ message: 'Address is Required' });
 }
 if (role === undefined) {
-    return res.status(400).json({ error: 'Role is Required' });
+    return res.status(400).json({ message: 'Role is Required' });
 }
 
 
@@ -32,7 +32,7 @@ if (role === undefined) {
 const existingUser= await UserModel.findOne({email})
 if(existingUser){
     return res.status(200).send({
-        success:true,
+        success:false,
         message:"Already register please login",
     })
 }

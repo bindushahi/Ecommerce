@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import connectDB from "./backend/config/db.js";
 import authRoutes from "./backend/routes/authRoute.js"
+import cors from 'cors'
 
 
 //configure env
@@ -18,6 +19,7 @@ const app=express();
 
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 

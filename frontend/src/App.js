@@ -6,8 +6,8 @@ import Policy from './pages/Policy';
 import Pagenotfound from './pages/Pagenotfound';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import  { Toaster } from 'react-hot-toast';
+
 
 
 
