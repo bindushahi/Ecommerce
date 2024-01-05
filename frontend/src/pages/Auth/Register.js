@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Layout from '../../components/Layout/Layout.js'
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const[username,setUsername]=useState("");
@@ -8,33 +9,40 @@ const Register = () => {
     const[phonenumber,setPhonenumber]=useState("");
     const[address,setAddress]=useState("");
 
+
+    //handle submit
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        console.log(username,email,password,phonenumber,address)
+        toast.success("yeyyyyy success")
+    }
+
   return (
     
     <Layout title="Register -Ecommerce App">
-
 <div className='register'>
     <h1>Register Page</h1>
-<form>
+<form onSubmit={handleSubmit}>
   <div className="mb-3">
-    <label htmlFor="exampleInputName" className="form-label">Username</label>
-    <input type="text" value="username" className="form-control" id="exampleInputName" placeholder='Enter Username'/>
+    <label className="form-label">Username</label>
+    <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} className="form-control" id="exampleInputName" placeholder='Enter Username'required/>
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-    <input type="email" value="email" className="form-control" id="exampleInputEmail1"placeholder='Enter Username'/>
+    <label className="form-label">Email</label>
+    <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control" id="exampleInputEmail1"placeholder='Enter Username'required/>
   </div>
 
   <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" value="password"className="form-control" id="exampleInputPassword1"placeholder='Enter Email' />
+    <label className="form-label">Password</label>
+    <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}className="form-control" id="exampleInputPassword1"placeholder='Enter Email'required />
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputPhonenumber" className="form-label">Phone Number</label>
-    <input type="number" value="phonenumber"className="form-control" id="exampleInputPhonenumber"placeholder='Enter Phone Number' />
+    <label className="form-label">Phone Number</label>
+    <input type="number" value={phonenumber} onChange={(e)=>setPhonenumber(e.target.value)}className="form-control" id="exampleInputPhonenumber"placeholder='Enter Phone Number'required />
   </div>
    <div className="mb-3">
-    <label htmlFor="exampleInputAddress" className="form-label">Address</label>
-    <input type="name"value="address" className="form-control" id="exampleInputAddress"placeholder='Enter Address' />
+    <label className="form-label">Address</label>
+    <input type="name"value={address} onChange={(e)=>setAddress(e.target.value)} className="form-control" id="exampleInputAddress"placeholder='Enter Address'required />
   </div>
 
   

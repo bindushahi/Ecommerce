@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Helmet from 'react-helmet'
+import Helmet from 'react-helmet';
+ import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children,title,description,keywords,author }) => {
   return (
@@ -16,8 +18,9 @@ const Layout = ({ children,title,description,keywords,author }) => {
       </Helmet>
       <Header />
       <div style={{ backgroundColor: 'lavender', minHeight: '80vh', padding: '20px' }}>
-        {children}
+        <ToastContainer/>
 
+        {children}
       </div>
       <Footer />
     </div>
