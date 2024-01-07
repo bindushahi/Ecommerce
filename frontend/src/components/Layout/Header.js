@@ -2,10 +2,22 @@ import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { SiShopify } from "react-icons/si";
 import { useAuth } from '../../Context/Auth';
+import { Toast } from 'react-hot-toast';
 
 
 const Header = () => {
   const[auth,setAuth]=useAuth()
+
+const handleLogout=()=>{
+  setAuth({
+    ...auth,
+    user:null,
+    token:'',
+  })
+  localStorage.removeItem('auth');
+}
+
+
   return (
     <>
 <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -38,7 +50,7 @@ const Header = () => {
           </> ): (
             <>
             <li className="nav-item">
-          <NavLink to='/login' className="nav-link">Log Out</NavLink>
+          <NavLink onClick={handleLogout} to='/login' className="nav-link">Log Out</NavLink>
         </li>
             
             </>
