@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import Layout from '../../components/Layout/Layout.js'
-import {toast} from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import{useNavigate} from 'react-router-dom';
 import axios from "axios";
 import '../../styles/AuthStyles.css'

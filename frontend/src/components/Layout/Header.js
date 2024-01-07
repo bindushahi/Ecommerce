@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { SiShopify } from "react-icons/si";
 import { useAuth } from '../../Context/Auth';
-import { Toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
@@ -15,6 +15,7 @@ const handleLogout=()=>{
     token:'',
   })
   localStorage.removeItem('auth');
+  toast.success("Logout Successfully");
 }
 
 
