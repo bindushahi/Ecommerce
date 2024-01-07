@@ -17,7 +17,9 @@ useEffect(()=>{
 
         });
     }
-},[auth]);
+    //eslint-disabled next line 
+    //console ko warning hatako continue exectute bhayera
+},[]);
 
 return(
     <AuthContext.Provider value={[auth,setAuth]}>
