@@ -1,8 +1,11 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { SiShopify } from "react-icons/si";
+import { useAuth } from '../../Context/Auth';
+
 
 const Header = () => {
+  const[auth,setAuth]=useAuth()
   return (
     <>
 <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -23,13 +26,23 @@ const Header = () => {
           <NavLink to='/category' className="nav-link" >Category</NavLink>
         </li>
 
-        <li className="nav-item">
+        {
+          !auth.user? (<> 
+          <li className="nav-item">
           <NavLink to='/register' className="nav-link">Sign Up</NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to='/login' className="nav-link">Log in</NavLink>
         </li>
+          </> ): (
+            <>
+            <li className="nav-item">
+          <NavLink to='/login' className="nav-link">Log Out</NavLink>
+        </li>
+            
+            </>
+          )}
 
         <li className="nav-item">
           <NavLink to='/cart' className="nav-link">Cart(0)</NavLink>

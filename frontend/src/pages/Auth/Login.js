@@ -1,15 +1,18 @@
 import React,{useState} from 'react'
 import Layout from '../../components/Layout/Layout.js'
 import {toast} from 'react-hot-toast';
-import{useNavigate} from 'react-router-dom';
+import{json, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import '../../styles/AuthStyles.css'
+import { useAuth } from '../../Context/Auth.js';
 
+
+//variable create
 const Login = () => {
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
     const navigate=useNavigate("");
-
+    const [auth,setAuth]=useAuth();
     //handle submit
     const handleSubmit=async(e)=>{
         e.preventDefault()
@@ -19,6 +22,12 @@ const Login = () => {
 
             if (res.data.success){
                 toast.success(res.data.message)
+                setAuth({
+                  ...auth,
+                  user:res.data.user,
+                  token:res.data.token,
+                });
+                localStorage.setItem('auth',JSON.stringify(res.data));
                 navigate('/');
             } else{
                 toast.error(res.data.message)
