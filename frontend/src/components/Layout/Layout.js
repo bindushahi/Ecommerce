@@ -16,7 +16,7 @@ const Layout = ({ children,title,description,keywords,author }) => {
         <title>{title}</title>
       </Helmet>
       <Header />
-      <div style={{ backgroundColor: 'lavender', minHeight: '80vh', padding: '20px' }}>
+      <div style={{ backgroundColor: 'lavender', minHeight: '82vh', padding: '2px' }}>
         <Toaster/>
 
         {children}
