@@ -14,8 +14,12 @@ router.post('/login',loginController);
 //test route
 router.get('/test',requireSignIn,isAdmin,testController);
 
-//private route protected route authentication
+//private route protected route authentication user route
 router.get('/user-auth',requireSignIn,(req,res)=>{
+    res.status(200).send({ok:true});
+})
+//private route protected route for admin authentication
+router.get('/admin-auth',requireSignIn,isAdmin,(req,res)=>{
     res.status(200).send({ok:true});
 })
 

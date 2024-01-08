@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { SiShopify } from "react-icons/si";
 import { useAuth } from '../../Context/Auth';
-import toast from 'react-hot-toast';
+import Toast from 'react-hot-toast';
 
 
 const Header = () => {
@@ -15,7 +15,7 @@ const handleLogout=()=>{
     token:'',
   })
   localStorage.removeItem('auth');
-  toast.success("Logout Successfully");
+  Toast.success("Logout Successfully");
 }
 
 
@@ -56,7 +56,7 @@ const handleLogout=()=>{
 
   </NavLink>
   <ul className="dropdown-menu">
-    <li><NavLink to='/dashboard'className="dropdown-item">Dashboard</NavLink></li>
+<NavLink to={`/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`} className="dropdown-item">Dashboard</NavLink>
       <li>  <NavLink onClick={handleLogout} to='/login' className="dropdown-item">Log Out</NavLink></li>
 
   

@@ -97,6 +97,7 @@ res.status(200).send({
         email:user.email,
         phonenumber:user.phonenumber,
         address:user.address,
+        role:user.role,
     },
     token,
 });
