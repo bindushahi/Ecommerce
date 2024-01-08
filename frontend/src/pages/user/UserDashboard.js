@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
 
-const Dashboard = () => {
+const UserDashboard = () => {
   return (
     <Layout title={'Your Dashboard'}>
       <h1>Dashboardddd</h1>
@@ -9,4 +9,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default UserDashboard

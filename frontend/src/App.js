@@ -6,11 +6,14 @@ import Policy from './pages/Policy';
 import Pagenotfound from './pages/Pagenotfound';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
-import Dashboard from './pages/user/Dashboard';
+import UserDashboard from './pages/user/UserDashboard';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import PrivateRoute from './components/Routes/Private';
 import ForgotPassword from './pages/Auth/ForgotPassword';
 import AdminRoute from './components/Routes/AdminRoute';
+import CreateCategory from './pages/Admin/CreateCategory';
+import CreateProducts from './pages/Admin/CreateProducts';
+import UserList from './pages/Admin/UsersList';
 
 function App() {
   return (
@@ -19,11 +22,16 @@ function App() {
         <Route path='/' element={<HomePage />} />
 
         <Route path='/dashboard' element={<PrivateRoute />}>
-          <Route path='user' element={<Dashboard />} />
+          <Route path='user' element={<UserDashboard />} />
         </Route>
         <Route path='/dashboard' element={<AdminRoute />}>
           <Route path='admin' element={<AdminDashboard />} />
+                  <Route path='admin/create-category' element={<CreateCategory/>} />
+                  <Route path='admin/create-product' element={<CreateProducts/>} />
+                  <Route path='admin/users' element={<UserList/>} />
+
         </Route>
+
 
 
         <Route path='/about' element={<About />} />
