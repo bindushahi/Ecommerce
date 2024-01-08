@@ -4,7 +4,7 @@ import JWT from "jsonwebtoken"
 
 export const registerController= async(req,res)=>{
     try{
-        const{username,email,password,phonenumber,address,role}=req.body
+        const{username,email,password,phonenumber,address,answer,role}=req.body
 
 //validation
 if(!username){
@@ -21,6 +21,9 @@ return res.status(400).json({ message: 'Phonenumber is Required' });
 }
 if(!address){
 return res.status(400).json({ message: 'Address is Required' });
+}
+if(!answer){
+return res.status(400).json({ message: 'Answer is Required' });
 }
 if (role === undefined) {
     return res.status(400).json({ message: 'Role is Required' });
@@ -39,7 +42,7 @@ if(existingUser){
 //register user
 const hashedPassword= await hashPassword(password)
 //save
-const user= await UserModel({username,email,password:hashedPassword,phonenumber,address,role}).save()
+const user= await UserModel({username,email,password:hashedPassword,phonenumber,address,answer,role}).save()
 res.status(201).send({
     success:true,
     message:'user register successfully',
@@ -110,6 +113,49 @@ res.status(200).send({
     }
 
 };
+
+//forgot password
+export const forgotPasswordController=async(req,res)=>{
+    try{
+        const {email,answer,newPassword}=req.body
+        if (!email){
+            res.status(400).send({message:"email is required"})
+        }
+                if (!answer){
+            res.status(400).send({message:"answer is required"})
+        }
+                if (!newPassword){
+            res.status(400).send({message:"New password is required"})
+        }
+        //check
+        const user=await UserModel.findOne({email,answer})
+//validation
+if(!user){
+    return res.status(404).send({
+        success:false,
+        message:'Wrong email or answer',
+    });
+}
+const hashed= await hashPassword(newPassword);
+await UserModel.findByIdAndUpdate(user._id,{password:hashed});
+res.status(200).send({
+    success:true,
+    message:"Password reset successfully",
+});
+
+    }
+    catch(error)
+    {
+        console.log(error)
+        res.status(500).send({
+            success:false,
+            message:"Something went wrong",
+            error
+        })
+    }
+};
+
+
 //testcontroller
 export const testController=(req,res)=>{
     res.send('protected route');

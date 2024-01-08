@@ -14,10 +14,6 @@ const Login = () => {
     const navigate=useNavigate("");
     const [auth,setAuth]=useAuth();
     const location=useLocation();
-
-    
-    
-    
     //handle submit
     const handleSubmit=async(e)=>{
         e.preventDefault()
@@ -61,9 +57,11 @@ const Login = () => {
     <label className="form-label">Password</label>
     <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}className="form-control" id="exampleInputPassword1"placeholder='Enter Email'required />
   </div>
-
+<div className='mb-3'><button type="submit" className="btn btn-primary" onClick={()=>{navigate('/forgot-password')}}>Forgot Password</button>
+</div>
   
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">Login</button>
+    
 </form>
 
 
