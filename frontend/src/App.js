@@ -14,6 +14,10 @@ import AdminRoute from './components/Routes/AdminRoute';
 import CreateCategory from './pages/Admin/CreateCategory';
 import CreateProducts from './pages/Admin/CreateProducts';
 import UserList from './pages/Admin/UsersList';
+import UserProfile from './pages/user/UserProfile'
+import Orders from './pages/user/Orders';
+
+
 
 function App() {
   return (
@@ -23,6 +27,11 @@ function App() {
 
         <Route path='/dashboard' element={<PrivateRoute />}>
           <Route path='user' element={<UserDashboard />} />
+          <Route path='user/profile' element={<UserProfile/>} />
+          <Route path='user/orders' element={<Orders/>} />
+
+
+
         </Route>
         <Route path='/dashboard' element={<AdminRoute />}>
           <Route path='admin' element={<AdminDashboard />} />
