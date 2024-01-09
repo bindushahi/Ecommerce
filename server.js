@@ -5,6 +5,10 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import connectDB from "./backend/config/db.js";
 import authRoutes from "./backend/routes/authRoute.js"
+import categoryRoute from './backend/routes/categoryRoute.js'
+// import productRoute from './routes/productRoute.js';
+// import orderRoute from './routes/orderRoute.js';
+
 import cors from 'cors'
 
 
@@ -25,6 +29,10 @@ app.use(morgan('dev'));
 
 //routes
 app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/category',categoryRoute);
+// app.use("/api/v1/product",productRoute)
+// app.use("/api/v1/order",orderRoute)
+
 
 //rest api create
 app.get("/",(req,res)=>{
