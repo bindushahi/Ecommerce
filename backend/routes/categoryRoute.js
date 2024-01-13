@@ -12,7 +12,8 @@ router.post('/create-category',requireSignIn,isAdmin,createCategoryController)
 router.put('/update-category/:id',requireSignIn,isAdmin,updateCategoryController)
 
 //get all category
-router.get('/get-category',getAllCategory)
+router.get('/get-category', getAllCategory);
+
 
 //single category
 router.get('/single-category/:slug',singleCategoryController)
